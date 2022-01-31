@@ -7,7 +7,7 @@ class Utente{
     protected $cognome;
     protected $email;
     protected $carteDiCredito = [];
-    protected $sconto = 0;
+    // protected $sconto = 0;
     
 
     public function __construct($_id, $_nome, $_cognome, $_email)
@@ -37,9 +37,9 @@ class Utente{
         return $this->email;
     }
 
-    public function setCdc($_carteDiCredito)
+    public function setCdc($_cartaDiCredito)
     {
-        $this->carteDiCredito[] = $_carteDiCredito;
+        $this->carteDiCredito[] = $_cartaDiCredito;
     }
 
     public function getCdc()
@@ -47,13 +47,14 @@ class Utente{
         return $this->carteDiCredito;
     }
 
-    public function getSconto()
-    {
-        return $this->sconto;
-    }
 
-    public function insertCdc($cartaDaInserire){
+    public function insertCdc($cartaDaInserire)
+    {
+        if($cartaDaInserire->scadenza < 1){
+            throw new Exception("carta di credito scaduta");
+        }else{
         $this->carteDiCredito[] = $cartaDaInserire;
+        }
     }
 
     
