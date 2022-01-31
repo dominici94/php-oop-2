@@ -6,6 +6,9 @@ class Utente{
     protected $nome;
     protected $cognome;
     protected $email;
+    protected $carteDiCredito = [];
+    protected $sconto = 0;
+    
 
     public function __construct($_id, $_nome, $_cognome, $_email)
     {
@@ -33,6 +36,27 @@ class Utente{
     {
         return $this->email;
     }
+
+    public function setCdc($_carteDiCredito)
+    {
+        $this->carteDiCredito[] = $_carteDiCredito;
+    }
+
+    public function getCdc()
+    {
+        return $this->carteDiCredito;
+    }
+
+    public function getSconto()
+    {
+        return $this->sconto;
+    }
+
+    public function insertCdc($cartaDaInserire){
+        $this->carteDiCredito[] = $cartaDaInserire;
+    }
+
+    
 }
 
 ?>
